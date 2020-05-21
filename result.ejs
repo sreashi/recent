@@ -40,10 +40,11 @@
         <div class="container p-3">
         <div class="card">
           <div class="card-body">    
-      <%= abcdef.subject_name %>
+      <%= value.period %>
+      <%= value.teacher_name %>
             <lable class="mdb-main-label">Date</lable> 
             <select class="mdb-select md-form colorful-select dropdown-danger">
-                    <option value="1"></option>
+                    <option value="1"><%=JSON.stringify(value.teacher_name)%></option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
                     <option value="4">Option 4</option>
@@ -63,7 +64,7 @@
           </div>
          
         </div>
-
+        <%=JSON.stringify(value)%>
       </div>
     </div>
     <div>
@@ -75,5 +76,29 @@
    // var viewer = $('my_canvas');
     //PDFobject.embed('test.pdf',viewer);
 </script>
+<table id="customers">
+  <thead>
+    <tr>
+     
+      <th>sec</th>
+      <th>Teacher Name</th>
+      <th>Class Date</th>
+      <th>Study Metarial</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for(var i=0; i < value.length; i++) { %>
+    <tr>
+      
+      <td><%= value[i].period %></td>
+
+      <td><%= value[i].teacher_name %></td>
+      <td><%= value[i].date %></td>
+      <td><%= value[i].query %></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
     </body>
     </html>

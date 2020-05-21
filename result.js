@@ -22,17 +22,21 @@ router.get('/result', function(req,res) {
     console.log(abcdef);
     dbConnection.execute(d,function(err, rows,fields){
                 //.then(([rows]) => {
-                        res.render('result', {
-                          'abcdef' : req.query
-                          },function(err, result){
+                var value =[];
+                rows.forEach(function(row){
+                  value.push({ teacher_name : row.teacher_name , period : row.period , date : row.date, pdf : row.pdf});
+                });
+                   res.render('result', {
+                         value : value,
+                          //}//,function(err, result){
                            // res.status(200).send(result)
                           });
-                          console.log(abcdef.subject_name);
+                   
                         // peeriod: rows[0].period, 
                             //teacher_name: rows[0].teacher_name,
                             //Date:rows[0].date
                 //});
-                
+         console.log(value);       
         console.log(rows);
         //console.log(rows[0].period);
         //console.log ('teacher name is',rows[0].teacher_name);
